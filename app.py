@@ -1,10 +1,11 @@
 import streamlit as st
 from groq import Groq, APIError
+import os
 
 st.title("Коротке резюме тексту")
 st.write("Встав текст, щоб отримати до трьох речень з його головними думками.")
 
-api_key = st.text_input("Ключ Groq API", type="password")
+api_key = os.getenv("GROQ_API_KEY") or st.text_input("Ключ Groq API", type="password")
 source_text = st.text_area("Вхідний текст", height=200)
 
 if st.button("Скоротити текст", type="primary"):
